@@ -4,6 +4,7 @@ name: Personal function to azure
 on:
   push:
     branches: [ master ]
+  workflow_dispatch:
 env:
   AZURE_FUNCTIONAPP_NAME: ajh657-personal-func-ddns  # set this to your application's name
   AZURE_FUNCTIONAPP_PACKAGE_PATH: 'src/AJH657.PersonalDDns/'    # set this to the path to your web app project, defaults to the repository root
