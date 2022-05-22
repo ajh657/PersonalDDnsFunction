@@ -11,6 +11,7 @@ using Microsoft.Rest.Azure.Authentication;
 using Microsoft.Azure.Management.Dns;
 using Microsoft.Azure.Management.Dns.Models;
 using System.Text.RegularExpressions;
+using System.Linq;
 
 namespace AJH657.PersonalDDns
 {
@@ -53,6 +54,9 @@ namespace AJH657.PersonalDDns
                 };
 
                 var dnsRecordSet = dnsClient.RecordSets.Get(dnsRG, dnsName, dnsRSName, RecordType.A);
+
+                if (dnsRecordSet.ARecords.Count > 0)
+                    dnsRecordSet.ARecords.Clear();
 
                 dnsRecordSet.ARecords.Add(new ARecord(ip));
 
